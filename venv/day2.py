@@ -12,7 +12,15 @@ def part1():
     with open("../data/day2.csv", newline='') as data:
         reader = csv.reader(data)
         for line in reader:
-            length = len(line)
+            #length = len(line)
+            #realLine = str(line)
+            #length = len(realLine)       #For some reason - directly computing the length of the line from the CSV reader gives a length of 1
+            #The above method is broken as well
+            realLine = ""
+            for i in line:
+                realLine += i
+            length = len(realLine)
+
             index = 0
             firstNum = 0
             secondNum = 0
@@ -23,38 +31,35 @@ def part1():
                 #print(int(line[index][0]))
                 index += 1
 
-            if (line[0][index] == '-'):
-                index += 1
+            #if (line[0][index] == '-'):
+            index += 1
 
             #Second number
             while (line[0][index] != ' '):
                 secondNum = secondNum * 10 + int(line[0][index])    #manually scanning the string for numbers and increasing accordingly by base 10
                 index += 1
 
-            if (line[0][index] == ' '):
-                index += 1
+            #if (line[0][index] == ' '):
+            index += 1
 
-            print(firstNum)
-            print(secondNum)
+            #print(firstNum)
+            #print(secondNum)
 
             #Grab the character to search for
             char = line[0][index]
 
-            print(char)
+            #print(char)
 
-            if(line[0][index] == ':' or line[0][index] == ' '):
-                index += 1
+            #if(line[0][index] == ':' or line[0][index] == ' '):
+            index += 2
 
             #Start looping through the rest of the list!
-
             count = 0
             while (index < length):
-                print(line[0][index])
+                #print(line[0][index])
                 if (line[0][index] == char):
                     count += 1
                 index += 1
-
-
 
             if (count >= firstNum and count <= secondNum):
                 numCorrect += 1
