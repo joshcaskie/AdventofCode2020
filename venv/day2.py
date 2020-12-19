@@ -112,11 +112,13 @@ def part2():
                 actual += line[0][index]
                 index += 1
 
-            r = range(firstNum - 1, secondNum - 1)
+            r = range(firstNum, secondNum + 1)   #I have no idea why it's not doing index 0 based operations
             found = False
             wrong = True
             for i in r:
-                if (not found and actual[i] == char):
+                print(i)
+                print(actual[i])
+                if (actual[i] == char):
                     found = True
                     wrong = False
                 elif (found):
