@@ -112,21 +112,20 @@ def part2():
                 actual += line[0][index]
                 index += 1
 
-            r = range(firstNum, secondNum + 1)   #I have no idea why it's not doing index 0 based operations
+            #Major realization - problem only requires checking INDEX a and b for the character!
             found = False
-            wrong = True
-            for i in r:
-                print(i)
-                print(actual[i])
-                if (actual[i] == char):
-                    found = True
-                    wrong = False
-                elif (found):
-                    wrong = True   #capitalized in python
+            correct = False
 
-            if (not wrong and found):
+            if (actual[firstNum] == char):     #Still not sure idea why it's not doing index 0 based operations
+                found = True
+
+            if (found and actual[secondNum] != char):
+                correct = True
+            elif (not found and actual[secondNum] == char):
+                correct = True
+
+            if (correct):
                 numCorrect += 1
-
 
 
     data.close()
