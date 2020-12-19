@@ -69,4 +69,68 @@ def part1():
 
     print(numCorrect)
 
+def part2():
+
+    numCorrect = 0
+
+    with open("../data/day2.csv", newline='') as data:
+        reader = csv.reader(data)
+        for line in reader:
+
+            realLine = ""
+            for i in line:
+                realLine += i
+            length = len(realLine)
+
+            index = 0
+            firstNum = 0
+            secondNum = 0
+
+            #Get the first number
+            while (line[0][index] != '-'):
+                firstNum = firstNum * 10 + int(line[0][index])
+                #print(int(line[index][0]))
+                index += 1
+
+            index += 1
+
+            #Second number
+            while (line[0][index] != ' '):
+                secondNum = secondNum * 10 + int(line[0][index])
+                index += 1
+
+            index += 1
+
+            #Grab the character to search for
+            char = line[0][index]
+
+            index += 2
+
+            #Save the rest of the string separately for analysis
+            actual = ""
+            while (index < length):
+                actual += line[0][index]
+                index += 1
+
+            r = range(firstNum - 1, secondNum - 1)
+            found = False
+            wrong = True
+            for i in r:
+                if (not found and actual[i] == char):
+                    found = True
+                    wrong = False
+                elif (found):
+                    wrong = True   #capitalized in python
+
+            if (not wrong and found):
+                numCorrect += 1
+
+
+
+    data.close()
+
+    print(numCorrect)
+
+
 part1()
+part2()
