@@ -14,13 +14,44 @@ def getData():
 
 def highestSeatID():
     arr = np.array(getData())
+    uniqueIDs = []
 
-    for i in range(len(list)):
-        rows = [x for x in range(128)]     #not sure why list(range(128)) doesn't work
-        cols = [x for x in range(8)]
+    for i in range(arr.size):
+        row = np.array(range(128))
+        col = np.array(range(8))
 
-        #idea is to start splitting the lists... Better to use a numpy array which I can split?
+        #idea is to split the lists and save only the HALF that we want to keep based on the scenario
 
+        seat = arr[i]
 
+        #Row Calculation
+        row_split = int(128 / 2)
+        for r in range(7):
+            if seat[r] == 'F': #Take the lower half of 128
+                row = row[:row_split]
+            else: #Take the upper half of 128
+                row = row[row_split:]
+            row_split = int(row_split / 2)
+
+        #Column Calculation
+        col_split = int(8 / 2)
+        for c in [7,8,9]:
+            if seat[c] == 'L': #Take the lower half of 8
+                col = col[:col_split]
+            else: #Take the upper half of 128
+                col = col[col_split:]
+            col_split = int(col_split / 2)
+
+        uniqueIDs.append(row[0] * 8 + col[0])
+
+    #print(uniqueIDs)
+
+    #Get the largest ID in the list
+    ans = -1
+    for i in uniqueIDs:
+        if ans > i:
+            ans = i
+
+    print(i)
 
 highestSeatID()
