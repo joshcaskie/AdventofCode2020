@@ -9,7 +9,7 @@ def part1():
 
     numCorrect = 0
 
-    with open("../data/day2.csv", newline='') as data:
+    with open("data/day2.csv", newline='') as data:
         reader = csv.reader(data)
         for line in reader:
             #length = len(line)

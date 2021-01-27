@@ -7,7 +7,7 @@ import csv
 def getData():
     list = []
 
-    with open("../data/day1.csv", newline='') as data:
+    with open("data/day1.csv", newline='') as data:
         reader = csv.reader(data)
         for line in reader:
             list.append(int(line[0]))

@@ -3,7 +3,7 @@ import csv
 def part1():
     #Store data in a list of lists // Matrix
     grid = []
-    with open("../data/day3.csv", newline='') as data:
+    with open("data/day3.csv", newline='') as data:
         reader = csv.reader(data)
         for line in reader:
             temp = ""
