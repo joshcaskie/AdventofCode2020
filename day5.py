@@ -44,14 +44,25 @@ def highestSeatID():
 
         uniqueIDs.append(row[0] * 8 + col[0])
 
-    #print(uniqueIDs)
+    print(uniqueIDs)
 
     #Get the largest ID in the list
     ans = -1
     for i in uniqueIDs:
-        if ans > i:
+        if i > ans:
             ans = i
 
-    print(i)
+    print(ans)
+
+#Error debugging / my code to find the ID is correct, but my largest number finder is not
+def get3B():
+    arr = np.array(getData())
+    for i in range(arr.size):
+        seat = arr[i]
+        if seat[0] == 'B' and seat[1] == 'B' and seat[2] == 'B':
+            print(seat)
+
+
+#get3B()
 
 highestSeatID()
